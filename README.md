@@ -13,7 +13,7 @@ In a few steps you can set it up completely on your own.
 
 ---
 
-## 📜 Content
+## Content
 
 - [Setup](#setup)
 
@@ -21,14 +21,14 @@ In a few steps you can set it up completely on your own.
 
 ---
 
-## 🤖 Before you begin...
+## Before you begin...
 ...AI helped me build this project, it was used to create a CSS design for the frontend, because I'm not a good designer with CSS.
 
 ---
 
-## ⏳ Setup
+## Setup
 
-### 🐧 Linux
+### Linux
 
 0. Firstly, make sure you're system is up to date and you have the required packages installed:
 
