@@ -17,8 +17,6 @@ In a few steps you can set it up completely on your own.
 
 - [Setup](#setup)
 
-- [Credits](#credits)
-
 ---
 
 ## Before you begin...
