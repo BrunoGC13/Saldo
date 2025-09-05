@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Saldo Dashboard</h1>
+        <p class="subtitle">Manage your income and expenses intelligently</p>
+
+        <div class="dashboard-grid">
+            <br>
+
+            <div class="plusMinus">
+
+                <h2 id="total-annually"></h2>
+                <br>
+                <br>
+                <h2 id="total-monthly"></h2>
+
+            </div>
+
+            <br>
+            <div class="income">
+
+                <h2>Income</h2>
+                <h4>Weekly</h4>
+                <ul id="income-list-weekly">
+
+                </ul>
+
+                <h4>Monthly</h4>
+                <ul id="income-list-monthly">
+
+                </ul>
+
+                <h4>Annually</h4>
+                <ul id="income-list-annually">
+
+                </ul>
+
+            </div>
+
+            <div class="expenses">
+
+                <h2>Expenses</h2>
+                <h4>Weekly</h4>
+                <ul id="expenses-list-weekly">
+
+                </ul>
+
+                <h4>Monthly</h4>
+                <ul id="expenses-list-monthly">
+
+                </ul>
+
+                <h4>Annually</h4>
+                <ul id="expenses-list-annually">
+
+                </ul>
+
+            </div>
+
+            <div class="categories">
+
+                <h2>Categories</h2>
+
+                <br>
+
+                <ul id="categoriesList">
+
+                </ul>
+
+                <br>
+            </div>
+
+            <div class="income-annually">
+
+                <h2>Income Annually</h2>
+
+                <p>Total Income (Annually): <span id="income-annually-text"></span></p>
+                <p>Total Income (Monthly): <span id="income-monthly-text"></span></p>
+                <p>Total Income (Weekly): <span id="income-weekly-text"></span></p>
+                <br>
+                <p>All together: <span id="income-total-text"></span></p>
+
+            </div>
+
+            <div class="expenses-annually">
+
+                <h2>Expenses Annually</h2>
+
+                <p>Total Expenses (Annually): <span id="expenses-annually-text"></span></p>
+                <p>Total Expenses (Monthly): <span id="expenses-monthly-text"></span></p>
+                <p>Total Expenses (Weekly): <span id="expenses-weekly-text"></span></p>
+                <br>
+                <p>All together: <span id="expenses-total-text"></span></p>
+
+            </div>
+
+            <br>
+
+            <form id="create-income-form">
+
+                <h2>Create Income</h2>
+
+                <div class="form-group">
+                    <label for="incomeName">Name: </label>
+                    <input type="text" name="incomeName" id="incomeName" placeholder="Income name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount-income">Amount: </label>
+                    <input type="number" name="amount-income" id="amount-income" placeholder="Income amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequencyIncome">Frequency: </label>
+                    <select name="frequencyIncome" id="frequencyIncome" required>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriesIncome">Category: </label>
+                    <select name="categoriesIncome" id="categoriesIncome" required></select>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitCreateIncomeBtn">Submit</button>
+                </div>
+
+            </form>
+
+            <form id="delete-income-form">
+
+                <h2>Delete Income</h2>
+                <div class="form-group">
+                    <label for="incomeNameDelete">Income name: </label>
+                    <input type="text" name="incomeNameDelete" id="incomeNameDelete" placeholder="Income name" required>
+                </div>
+                <div class="form-group">
+                    <label for="incomeFrequencyDelete">Income frequency: </label>
+                    <select name="incomeFrequencyDelete" id="incomeFrequencyDelete" required>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitDeleteIncomeBtn">Delete</button>
+                </div>
+            </form>
+
+            <br>
+
+
+
+
+
+            <br>
+
+            <form id="create-expenses-form">
+
+                <h2>Create Expenses</h2>
+
+                <div class="form-group">
+                    <label for="expensesName">Name: </label>
+                    <input type="text" name="expensesName" id="expensesName" placeholder="Expenses name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount-expenses">Amount: </label>
+                    <input type="number" name="amount-expenses" id="amount-expenses" placeholder="Expenses amount"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequencyExpenses">Frequency: </label>
+                    <select name="frequencyExpenses" id="frequencyExpenses" required>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriesExpenses">Category: </label>
+                    <select name="categoriesExpenses" id="categoriesExpenses" required></select>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitCreateExpensesBtn">Submit</button>
+                </div>
+
+            </form>
+
+            <form id="delete-expenses-form">
+
+                <h2>Delete Expenses</h2>
+                <div class="form-group">
+                    <label for="expensesNameDelete">Expenses name: </label>
+                    <input type="text" name="expensesNameDelete" id="expensesNameDelete" placeholder="Expenses name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="expensesFrequencyDelete">Expenses frequency: </label>
+                    <select name="expensesFrequencyDelete" id="expensesFrequencyDelete" required>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitDeleteExpensesBtn">Delete</button>
+                </div>
+            </form>
+
+            <br>
+
+
+            <form id="create-category-form">
+
+                <h2>Create Category</h2>
+
+                <div class="form-group">
+                    <label for="categoryName">Name: </label>
+                    <input type="text" name="categoryName" id="categoryName" placeholder="Category name" required>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitCreateCategoryBtn">Submit</button>
+                </div>
+
+            </form>
+
+            <form id="delete-category-form">
+
+                <h2>Delete Category</h2>
+
+                <div class="form-group">
+                    <label for="categoryNameDelete">Name: </label>
+                    <input type="text" name="categoryNameDelete" id="categoryNameDelete" placeholder="Category name" required>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitDeleteCategoryBtn">Delete</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <script src="scripts/index.js"></script>
+
+</body>
+
+</html>

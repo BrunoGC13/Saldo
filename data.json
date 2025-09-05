@@ -1,0 +1,25 @@
+{
+    "incomes": [
+        {
+            "weekly": []
+        },
+        {
+            "monthly": []
+        },
+        {
+            "annually": []
+        }
+    ],
+    "expenses": [
+        {
+            "weekly": []
+        },
+        {
+            "monthly": []
+        },
+        {
+            "annually": []
+        }
+    ],
+    "categories": []
+}

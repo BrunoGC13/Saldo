@@ -15,14 +15,23 @@ In a few steps you can set it up completely on your own.
 
 ## Content
 
+- [Features](#features)
 - [Setup](#setup)
 
 ---
 
 ## Before you begin...
-...AI helped me build this project, it was used to create a CSS design for the frontend, because I'm not a good designer with CSS.
+...AI helped me build this project, it was used to create a CSS design for the frontend, because I'm not a good designer with CSS.   
+The AI I used is Claude Sonnet 4.
 
 ---
+
+## Features
+
+- 💵 Add/Remove Incomes / Expenses - you can add your Incomes and Expenses and also categorize them!
+- ➕ You can check if you will go in to debt or if you will stay in credit (in years)
+- 📃 Like mentioned above, you can categorize your incomes and expenses and also create your own categories.
+- ✒️ You can make up your own frontend with your design and logic, because the backend is independent of the frontend.
 
 ## Setup
 

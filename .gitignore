@@ -1,0 +1,6 @@
+# folders
+node_modules/
+modules/
+
+# files
+requests.rest
