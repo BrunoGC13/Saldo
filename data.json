@@ -5,16 +5,6 @@
         },
         {
             "monthly": [
-                {
-                    "name": "Taschengeld",
-                    "amount": 28,
-                    "category": "Life"
-                },
-                {
-                    "name": "Adobe",
-                    "amount": 20,
-                    "category": "Life"
-                }
             ]
         },
         {
@@ -27,36 +17,13 @@
         },
         {
             "monthly": [
-                {
-                    "name": "iCloud",
-                    "amount": 2.99,
-                    "category": "Life"
-                },
-                {
-                    "name": "Hetzner",
-                    "amount": 14.09,
-                    "category": "Life"
-                },
-                {
-                    "name": "Adobe",
-                    "amount": 20,
-                    "category": "Life"
-                }
             ]
         },
         {
             "annually": [
-                {
-                    "name": "Domain",
-                    "amount": 12,
-                    "category": "Life"
-                }
             ]
         }
     ],
     "categories": [
-        {
-            "name": "Life"
-        }
     ]
 }
