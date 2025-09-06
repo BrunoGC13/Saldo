@@ -289,6 +289,12 @@ function getPlusMinus() {
 
     roundedPlusMinus = plusMinus.toFixed(2);
 
+    if (isNaN(roundedPlusMinus)) {
+        totalTextAnnually.style.color = 'green';
+        totalTextAnnually.innerText = 'Total: 0€';
+        return;
+    }
+
     if (roundedPlusMinus >= 0) {
         totalTextAnnually.style.color = 'green';
         totalTextAnnually.innerText = 'Total: ' + roundedPlusMinus + '€';
