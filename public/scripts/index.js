@@ -175,6 +175,7 @@ async function getAnnuallyExpenses() {
 const categoriesSelection = document.getElementById('categoriesIncome');
 const categoriesSelectionExpens = document.getElementById('categoriesExpenses');
 const categoriesList = document.getElementById('categoriesList');
+const categoriesSubscription = document.getElementById('categoriesSubscription');
 
 async function getCategories() {
     try {
@@ -192,8 +193,10 @@ async function getCategories() {
 
             let newOption = new Option(element.name, element.name);
             let newOption2 = new Option(element.name, element.name);
+            let newOption3 = new Option(element.name, element.name);
             categoriesSelection.add(newOption);
             categoriesSelectionExpens.add(newOption2);
+            categoriesSubscription.add(newOption3);
 
             const li = document.createElement('li');
             li.textContent = element.name;
@@ -203,6 +206,30 @@ async function getCategories() {
 
         // console.log(data);
 
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+const subscriptionList = document.getElementById('subscription-list-ul');
+
+async function getSubscriptions() {
+    try {
+        const response = await fetch('/api/get/subscriptions', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        const data = await response.json();
+
+        data.forEach(element => {
+            const li = document.createElement('li');
+            li.textContent = 'Name: ' + element.name + '; Date: ' + element.date + '; Category: ' + element.category;
+            subscriptionList.appendChild(li);
+
+        })
     } catch (err) {
         console.error(err);
     }
@@ -269,6 +296,69 @@ async function createExpenses() {
         } else {
             alert("Error while creating expenses!");
             console.error(data.error);
+        }
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+const categoriesSubscriptions = document.getElementById('categoriesSubscription');
+const dateSubscriptions = document.getElementById('date-subscription');
+const subscriptionName = document.getElementById('subscriptionName');
+
+async function createSubscription() {
+    try {
+        const response = await fetch('/api/create/subscription', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: subscriptionName.value, date: dateSubscriptions.value, category: categoriesSubscriptions.value })
+        })
+
+        if (!response.ok) {
+            console.error("Error while fetching!");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            window.location.reload();
+            alert("Successfully created subscription!");
+        } else {
+            alert("Error while creating subscription!");
+            console.error(data.error);
+        }
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+const subscriptionNameDelete = document.getElementById('subscriptionNameDelete');
+
+async function deleteSubscription() {
+    try {
+        const response = await fetch('/api/delete/subscriptions', {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: subscriptionNameDelete.value })
+        })
+
+        if (!response.ok) {
+            console.error("Error while fetching!");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Successfully deleted subscription!");
+            window.location.reload();
+        } else {
+            alert("Error while deleting subscription!");
         }
 
     } catch (err) {
@@ -439,6 +529,30 @@ const createCategoryForm = document.getElementById('create-category-form');
 const deleteCategoryForm = document.getElementById('delete-category-form');
 const submitCreateCategoryBtn = document.getElementById('submitCreateCategoryBtn');
 const submitDeleteCategoryBtn = document.getElementById('submitDeleteCategoryBtn');
+const createSubscriptionForms = document.getElementById('create-subscription-form');
+const submitCreateSubscriptionBtn = document.getElementById('submitCreateSubscriptionBtn');
+const submitDeleteSubscriptionBtn = document.getElementById('submitDeleteSubscriptionBtn');
+const deleteSubscriptionForm = document.getElementById('delete-subscription-form');
+
+deleteSubscriptionForm.addEventListener("submit", (e => {
+    e.preventDefault();
+    deleteSubscription();
+}));
+
+submitDeleteSubscriptionBtn.addEventListener("click", (e => {
+    e.preventDefault();
+    deleteSubscription();
+}));
+
+submitCreateSubscriptionBtn.addEventListener("click", (e => {
+    e.preventDefault();
+    createSubscription();
+}));
+
+createSubscriptionForms.addEventListener("submit", (e => {
+    e.preventDefault();
+    createSubscription();
+}));
 
 deleteCategoryForm.addEventListener("submit", (e => {
     e.preventDefault();
@@ -501,6 +615,7 @@ window.addEventListener("load", async () => {
     await getAnuallyIncomes();
     await getAnnuallyExpenses();
     await getCategories();
+    await getSubscriptions();
 
     getPlusMinus();
 });

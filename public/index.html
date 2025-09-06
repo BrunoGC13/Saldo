@@ -106,7 +106,19 @@
 
             </div>
 
-            <br>
+            <div class="subscription-list">
+
+                <h2>Subscriptions</h2>
+
+                <br>
+
+                <ul id="subscription-list-ul">
+
+                </ul>
+
+                <br>
+
+            </div>
 
             <form id="create-income-form">
 
@@ -164,10 +176,6 @@
             </form>
 
             <br>
-
-
-
-
 
             <br>
 
@@ -230,6 +238,46 @@
 
             <br>
 
+            <form id="create-subscription-form">
+
+                <h2>Create Subscriptions</h2>
+
+                <div class="form-group">
+                    <label for="subscriptionName">Name: </label>
+                    <input type="text" name="subscriptionName" id="subscriptionName" placeholder="Subscription name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date-subscription">Date: </label>
+                    <input type="date" name="date-subscription" id="date-subscription" placeholder="Subscription date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriesSubscription">Category: </label>
+                    <select name="categoriesSubscription" id="categoriesSubscription" required></select>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitCreateSubscriptionBtn">Submit</button>
+                </div>
+
+            </form>
+
+            <form id="delete-subscription-form">
+
+                <h2>Delete Subscription</h2>
+                <div class="form-group">
+                    <label for="subscriptionNameDelete">Subscription name: </label>
+                    <input type="text" name="subscriptionNameDelete" id="subscriptionNameDelete" placeholder="Subscription name" required>
+                </div>
+
+                <div class="form-group">
+                    <button id="submitDeleteSubscriptionBtn">Delete</button>
+                </div>
+            </form>
+
+            <br>
+
 
             <form id="create-category-form">
 
@@ -252,7 +300,8 @@
 
                 <div class="form-group">
                     <label for="categoryNameDelete">Name: </label>
-                    <input type="text" name="categoryNameDelete" id="categoryNameDelete" placeholder="Category name" required>
+                    <input type="text" name="categoryNameDelete" id="categoryNameDelete" placeholder="Category name"
+                        required>
                 </div>
 
                 <div class="form-group">

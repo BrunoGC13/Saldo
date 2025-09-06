@@ -132,6 +132,18 @@ app.get('/api/get/categories', async (req, res) => {
     }
 });
 
+app.get('/api/get/subscriptions', async (req, res) => {
+    try {
+        const filePath = path.join(__dirname, "data.json");
+        const data = await fs.readFile(filePath, "utf-8");
+        const subscriptions = JSON.parse(data);
+        res.json(subscriptions.subscriptions);
+    } catch (err) {
+        console.error("Error reading data.json:", err);
+        res.status(500).json({ error: "Could not read subscription data!" });
+    }
+});
+
 app.get('/export', (req, res) => {
     const options = {
         root: path.join(__dirname)
@@ -279,6 +291,66 @@ app.delete('/api/delete/expenses', async (req, res) => {
         res.status(500).json({ error: "Could not delete expenses", success: false });
     }
 });
+
+app.post('/api/create/subscription', async (req, res) => {
+    const { name, date, category } = req.body;
+
+    if (!name || !date || !category) {
+        res.status(400).json({ error: "Name, date and category are all required!" });
+    }
+
+    try {
+        const filePath = path.join(__dirname, "data.json");
+        const tempData = await fs.readFile(filePath, "utf-8");
+        const data = JSON.parse(tempData);
+
+        const newSubscription = { name, date, category };
+
+        data.subscriptions.push(newSubscription)
+
+        await fs.writeFile(filePath, JSON.stringify(data, null, 4), "utf-8");
+
+        res.json({ success: true });
+
+    } catch (err) {
+        console.error("Error reading data.json:", err);
+        res.status(500).json({ error: "Could not create subscription!", success: false });
+    }
+
+});
+
+app.delete('/api/delete/subscriptions', async (req, res) => {
+    const { name } = req.body;
+
+    if (!name) {
+        return res.status(400).json({ error: "Name is required!" });
+    }
+
+    try {
+        const filePath = path.join(__dirname, "data.json");
+        const tempData = await fs.readFile(filePath, "utf-8");
+        const data = JSON.parse(tempData);
+
+        let target = data.subscriptions;
+
+        const newSubscriptions = target.filter(entry => entry.name !== name);
+
+        if (newSubscriptions.length === target.length) {
+            return res.status(400).json({ success: false, error: "No subscription found!" });
+        }
+
+        data.subscriptions = newSubscriptions;
+
+        await fs.writeFile(filePath, JSON.stringify(data, null, 4), "utf-8");
+
+        res.json({ success: true });
+
+    } catch (err) {
+        console.error("Error reading/writing data.json:", err);
+        res.status(500).json({ error: "Could not delete subscription", success: false });
+    }
+});
+
 
 app.post('/api/create/category', async (req, res) => {
     const { name } = req.body;

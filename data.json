@@ -4,8 +4,7 @@
             "weekly": []
         },
         {
-            "monthly": [
-            ]
+            "monthly": []
         },
         {
             "annually": []
@@ -16,14 +15,12 @@
             "weekly": []
         },
         {
-            "monthly": [
-            ]
+            "monthly": []
         },
         {
-            "annually": [
-            ]
+            "annually": []
         }
     ],
-    "categories": [
-    ]
+    "categories": [],
+    "subscriptions": []
 }
